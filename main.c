@@ -7,10 +7,12 @@ typedef struct BSTnode
 	struct BSTnode *bleft, *bright;
 }bst;
 bst *broot=NULL;
+/*test data*/
 int ascarr[]={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25};
 	int descarr[]={25,24,23,22,21,20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1};
 	int randarr[]={5,3,12,13,22,15,9,3,8,7,16,19,20,24,1,18,17,133,4,22,11,23,12,21,45};
-	
+
+/*inserting*/
 void insertbst(int key)
 {
 	bst *p , *q , *r;
@@ -46,6 +48,8 @@ void insertbst(int key)
 		}
 	}
 }
+
+//search
 void bstsearch(int key)
 {	
 	bst *p=broot;
@@ -61,6 +65,8 @@ void bstsearch(int key)
 		}
 	}
 }
+
+//calculating time
 void binaryst()
 {
 	clock_t bstart, bend, bstart2, bend2,bstarts,bends;
@@ -74,20 +80,25 @@ void binaryst()
 	{
 		insertbst(ascarr[i]);
 	}
+	//test 1
 	bend=clock();
 	asctotal = (double)(bend - bstart)*1000000 / CLOCKS_PER_SEC;
 	printf("\tASCENDING ARRAY:\n Insertion Time:%f x10^-6 seconds\n",asctotal);
+	//search 1
 	bstarts=clock();
 	bstsearch(1);
 	bends=clock();
 	asctotals = (double)(bends - bstarts)*1000000 / CLOCKS_PER_SEC;
 	printf("Time taken to search smallest element:\t%f x10^-6 seconds\n",asctotals);
+	
+	//search2
 	bstarts=clock();
 	bstsearch(25);
 	bends=clock();
 	asctotals = (double)(bends - bstarts)*1000000 / CLOCKS_PER_SEC;
 	printf("Time taken to search largest element:\t%f x10^-6 seconds\n\n",asctotals);
 	broot=NULL;
+	
 	//descending
 	bstart2=clock();
 	for(i=0;i<25;i++)
@@ -97,16 +108,21 @@ void binaryst()
 	bend2=clock();
 	desctotal = (double)(bend2 - bstart2)*1000000 / CLOCKS_PER_SEC;
 	printf("\tDESCENDING ARRAY:\n Insertion Time:%f x10^-6 seconds\n",desctotal);
+	
+	//test 1
 	bstarts=clock();
 	bstsearch(1);
 	bends=clock();
 	desctotals=(double)(bends - bstarts)*1000000 / CLOCKS_PER_SEC;
 	printf("Time taken to search for the smallest number: %f x10^-6 seconds\n",desctotals);
+	
+	//test 2
 	bstarts=clock();
 	bstsearch(25);
 	bends=clock();
 	desctotals=(double)(bends - bstarts)*1000000 / CLOCKS_PER_SEC;
 	printf("Time taken to search for the largest number: %f x10^-6 seconds\n\n",desctotals);
+	
 	//random
 	broot=NULL;
 	bstart=clock();
@@ -117,11 +133,15 @@ void binaryst()
 	bend=clock();
 	randtotal = (double)(bend - bstart)*1000000 / CLOCKS_PER_SEC;
 	printf("\tRANDOM ARRAY:\n Insertion Time:%f x10^-6 seconds\n",randtotal);
+	
+	//test1
 	bstarts=clock();
 	bstsearch(1);
 	bends=clock();
 	randtotals=(double)(bends - bstarts)*1000000 / CLOCKS_PER_SEC;
 	printf("Time taken to search the smallest element: %f x10^-6 seconds\n",randtotals);
+	
+	//test2
 	bstarts=clock();
 	bstsearch(133);
 	bends=clock();
@@ -129,6 +149,7 @@ void binaryst()
 	printf("The time taken to search the largest element: %f x10^-6 seconds\n\n",randtotals);
 	
 }
+
 //heap tree
 void heapify(int arr[],int i)
 {
@@ -145,6 +166,7 @@ void heapify(int arr[],int i)
 		}
 	}
 }
+
 void minheapify(int arr[],int i)
 {
 	int parent=(i-1)/2;
@@ -160,6 +182,7 @@ void minheapify(int arr[],int i)
 		}
 	}
 }
+
 void heap()
 {
 	clock_t start, end;
@@ -199,6 +222,7 @@ void heap()
 	printf("RANDOM ARRAY:   %f x10^-6 seconds\n\n", total);
 	
 }
+
 void minheap()
 {
 	clock_t start, end;
